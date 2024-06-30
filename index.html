@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ProjectsApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Status</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="ProjectsAppCtrl">
+    <div class="maincontent">
+        <div class="navbar">
+            <h3>APPRICUS</h3>
+            <a href="#">Test</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Foundation</a>
+            <a href="#">My Plan</a>
+            <a href="#">Toolbox</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="main">
+            <div class="header"><h3>PGS PORTAL</h3></div>
+            <div class="content">
+                <div class="cardsProj">
+                    <div class="cards">
+                        <div class="card1" ng-show="showCard">
+                            <div class="carddata">
+                                <div id="icon"><img src="images/project Maneg32.png" alt=""></div>
+                                <h4 contenteditable="">Delhi Project</h4>
+                                <p contenteditable="">How can we fulfill the demand of the people. there are 400L people
+                                    using our products.</p>
+                            </div>
+                            <div class="closebtnStatus">
+                                <div class="closeButton" ng-click="closeCard()"><img src="images/circle-xmark.png"
+                                        alt=""></div>
+                                <div id="status" ng-click="toggleImageList1()">
+                                    <img src="images/check-mark.png" ng-src="{{ selectedImage }}" alt="">
+                                </div>
+                                <div class="image-list" ng-class="{ 'show': showImageList }">
+                                    <img src="images/correct.png" alt="" ng-click="selectImage1('images/correct.png')">
+                                    <img src="images/pointer.png" alt="" ng-click="selectImage1('images/pointer.png')">
+                                    <img src="images/warning.png" alt="" ng-click="selectImage1('images/warning.png')">
+                                    <img src="images/circle.png" alt="" ng-click="selectImage1('images/circle.png')">
+                                    <img src="images/check-mark.png" alt=""
+                                        ng-click="selectImage1('images/check-mark.png')">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card1" ng-show="showCard" ng-repeat="project in projects">
+                            <div class="carddata">
+                                <div id="icon"><img src="images/project Maneg32.png" alt=""></div>
+                                <h4 contenteditable="">Delhi Project</h4>
+                                <p contenteditable="">How can we fulfill the demand of the people. there are 400L people
+                                    using our products.</p>
+                            </div>
+                            <div class="closebtnStatus">
+                                <div class="closeButton" ng-click="closeCard($index)"><img src="images/circle-xmark.png"
+                                        alt=""></div>
+                                <div id="status" ng-click="toggleImageList($index)">
+                                    <img src="images/check-mark.png" ng-src="{{ project.selectedImage }}" alt="">
+                                </div>
+                                <div class="image-list" ng-class="{ 'show': project.showImageList }">
+                                    <img src="images/correct.png" alt=""
+                                        ng-click="selectImage('images/correct.png', $index)">
+                                    <img src="images/pointer.png" alt=""
+                                        ng-click="selectImage('images/pointer.png', $index)">
+                                    <img src="images/warning.png" alt=""
+                                        ng-click="selectImage('images/warning.png', $index)">
+                                    <img src="images/circle.png" alt=""
+                                        ng-click="selectImage('images/circle.png', $index)">
+                                    <img src="images/check-mark.png" alt=""
+                                        ng-click="selectImage('images/check-mark.png', $index)">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="addbutton" id="add-project-btn"></div> -->
+                        <div class="addbutton" ng-click="addProject()"><img src="images/plus.png" alt="clearPic"></div>
+                    </div>
+                    <div class="progressLineButton">
+                        <div class="progressLine">
+                            <div class="progressLine2"></div>
+                        </div>
+
+                        <div class="lineButton">Luanch Project</div>
+                    </div>
+                </div>
+
+                <!-- Code for comments and Conutdown> -->
+
+                <div class="commentCountdown">
+                    <div class="comments">
+                        <h4>Comment</h4>
+                    <div class="comment-container">
+                        <div id="comment-section">
+                            <div class="comment" ng-repeat="comment in comments">
+                                <p>{{ comment }}</p>
+                            </div>
+                        </div>
+                        <form id="comment-form" ng-submit="addComment()">
+                            <input class="commentinput" type="text" id="comment-input" ng-model="newComment"
+                                placeholder="Write your comment...">
+                            <button id="add" type="submit">Add</button>
+                        </form>
+                    </div>
+                    </div>
+                    
+
+                    <!-- Code for Conutdown> -->
+                    <div class="countdown">
+                        <div id="seprater">
+                            <div id="days">{{ days }}</div>
+                            <div id="days1">DAYS</div>
+                        </div>
+                        <div id="seprater">
+                            <div id="hours">{{ hours }}</div>
+                            <div id="hours1">HOURS</div>
+                        </div>
+                        <div id="seprater">
+                            <div id="minutes">{{ minutes }}</div>
+                            <div id="minutes1">MINUTES</div>
+                        </div>
+                        <div id="seprater">
+                            <div id="seconds">{{ seconds }}</div>
+                            <div id="seconds1">SECONDS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="footer"><p>APPRICUS &copy; 2024.</p></div>
+</body>
+
+</html>
